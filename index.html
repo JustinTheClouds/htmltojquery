@@ -7,6 +7,7 @@
     <meta name="description" content="Htmltojquery : Easily convert any html element into almost any jquery plugin with little or no javascript needed." />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/jquery.prism.css">
     <link rel="stylesheet" type="text/css" media="screen" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
 
     <title>Htmltojquery</title>
@@ -14,6 +15,7 @@
 	<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 	<script src="javascripts/jquery.expander.js"></script>
+	<script src="javascripts/jquery.prism.js"></script>
 	<script src="javascripts/jquery.countdown.js"></script>
 	<script src="javascripts/jquery.htmltojquery.js"></script>
 	<script>
@@ -65,18 +67,18 @@
 		
 		<h3 id="quickUsage">Quick usage</h3>
 		<p>Include the htmltojquery plugin after jquery and after other plugins you will be using.</p>
-<pre><code>&lt;script src="http://code.jquery.com/jquery-1.8.3.js"&gt;&lt;/script&gt;
+<pre><code class="language-markup">&lt;script src="http://code.jquery.com/jquery-1.8.3.js"&gt;&lt;/script&gt;
 &lt;script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"&gt;&lt;/script&gt;
 &lt;script src="javascripts/jquery.htmltojquery.js"&gt;&lt;/script&gt;
 </code></pre>
 		<p>Add the <strong>data-plugins</strong> attribute to your elements that will be initialized with your favorite plugins.</p>
-<pre><code>&lt;div id="accordion" <strong>data-plugins="accordion"&gt;</strong>
+<pre><code class="language-markup">&lt;div id="accordion" <strong>data-plugins="accordion"&gt;</strong>
 	&lt;h3&gt;Section 1&lt;/h3&gt;
 	...
 &lt;/div&gt;
 </code></pre>
 		<p>Initialize the <strong>htmlToJquery</strong> plugin</p>
-<pre><code>&lt;script&gt;
+<pre><code class="language-markup">&lt;script&gt;
 	$(document).ready(function() {
 		$(this).htmlToJquery();
 	});
@@ -85,7 +87,7 @@
 		
 		<h4>Define Options</h4>
 		<p>Use <strong>data-[pluginname]-[option]="[value]"</strong></p>
-<pre><code>&lt;div id="accordion" data-plugins="accordion" <strong>data-accordion-collapsible="true"</strong>&gt;
+<pre><code class="language-markup">&lt;div id="accordion" data-plugins="accordion" <strong>data-accordion-collapsible="true"</strong>&gt;
 	&lt;h3&gt;Section 1&lt;/h3&gt;
 	...
 &lt;/div&gt;
@@ -94,7 +96,7 @@
 		
 		<h4>Events Callbacks</h4>
 		<p>Use <strong>data-[pluginname]-[event]="[functionName]"</strong></p>
-<pre><code>&lt;div id="accordion" data-plugins="accordion" <strong>data-accordion-activate="accordionActivate"</strong>&gt;
+<pre><code class="language-markup">&lt;div id="accordion" data-plugins="accordion" <strong>data-accordion-activate="accordionActivate"</strong>&gt;
 	&lt;h3&gt;Section 1&lt;/h3&gt;
 	...
 &lt;/div&gt;
@@ -103,14 +105,14 @@
 
 		<h4>Defaulting Options</h4>
 		<p>Define function <strong>setDefaults[Pluginname]Plugin</strong>. Then set default options.</p>
-<pre><code>function setDefaultsAccordionPlugin(opts) {
+<pre><code class="language-markup">function setDefaultsAccordionPlugin(opts) {
 	opts.heightStyle = "content";
 }</code></pre>
 		<a href="#defaults" title="More information about defaulting options">More information</a>
 
 		<h4>Manipulating Options Before Initialization</h4>
 		<p>Define function <strong>preInit[Pluginname]Plugin</strong>. Then run code to edit and set options.</p>
-<pre><code>function preInitAccordionPlugin(opts) {
+<pre><code class="language-markup">function preInitAccordionPlugin(opts) {
 	if(x == y) {
 		opts.heightStyle = "content";
 	}
@@ -157,14 +159,14 @@
 		
 		<h5>Code for this example</h5>
 		<p>All you need to add is the <strong>data-plugins</strong> attribute with the plugins you want this element to be initialized with.</p>
-<pre><code>&lt;div id="accordion" <strong>data-plugins="accordion"&gt;</strong>
+<pre><code class="language-markup">&lt;div id="accordion" <strong>data-plugins="accordion"&gt;</strong>
 	&lt;h3&gt;Section 1&lt;/h3&gt;
 	...
 &lt;/div&gt;
 </code></pre>
 
 		<p>Then just make sure to initialize the htmlToJquery plugin after the DOM is ready.</p>
-<pre><code>&lt;script&gt;
+<pre><code class="language-markup">&lt;script&gt;
 	$(document).ready(function() {
 		$(this).htmlToJquery();
 	});
@@ -172,17 +174,17 @@
 </code></pre>
 	
 		<p class="notes">Initializing the htmlToJquery plugin on the <strong>$(document)</strong> will find all elements with the <strong>data-plugins</strong> attribute. If you would like to target a specific element, you can also use:</p>
-<pre><code>$('#targetElement').htmlToJquery();</code></pre>
+<pre><code class="language-markup">$('#targetElement').htmlToJquery();</code></pre>
 		
 		<p class="notes">Targeting a specific element will also include any children elements that also have the <strong>data-plugins</strong> attribute.</p>
 
 		<h3 id="options">Defining more options for a plugin</h3>
 		<p>Let's say we wanted to set the accordions <strong>heightStyle</strong> option equal to <strong>"content"</strong>. Typically that would be done during intialization like this:</p>
-<pre><code>$( "#accordion" ).accordion({ heightStyle: "content" });</code></pre>
+<pre><code class="language-markup">$( "#accordion" ).accordion({ heightStyle: "content" });</code></pre>
 		
 		<p>Using the HTMLToJquery plugin, all we need do is add another attribute. <strong>data-accordion-height_style="content"</strong>
 
-<pre><code>&lt;div id="accordion" <strong>data-plugins="accordion" data-accordion-height_style="content"</strong>&gt;
+<pre><code class="language-markup">&lt;div id="accordion" <strong>data-plugins="accordion" data-accordion-height_style="content"</strong>&gt;
 	&lt;h3&gt;Section 1&lt;/h3&gt;
 	...
 &lt;/div&gt;
@@ -229,14 +231,14 @@
 		</div>
 		
 		<p>Simple as adding the function name as the option. <strong>data-accordion-activate="accordionActivate"</strong></p>
-<pre><code>&lt;div id="accordion" <strong>data-accordion-activate="accordionActivate"</strong> data-accordion-height_style="content" data-accordion-icons-header="ui-icon-circle-arrow-e" data-accordion-icons-active_header="ui-icon-circle-arrow-s"  data-plugins="accordion"&gt;
+<pre><code class="language-markup">&lt;div id="accordion" <strong>data-accordion-activate="accordionActivate"</strong> data-accordion-height_style="content" data-accordion-icons-header="ui-icon-circle-arrow-e" data-accordion-icons-active_header="ui-icon-circle-arrow-s"  data-plugins="accordion"&gt;
 	&lt;h3&gt;Section 1&lt;/h3&gt;
 	...
 &lt;/div&gt;
 </code></pre>
 		
 		<p>Then defining the function</p>
-<pre><code>function accordionActivate(event, ui, element) {
+<pre><code class="language-markup">function accordionActivate(event, ui, element) {
 	alert(ui.newHeader.text() + " is now expanded.");
 }</code></pre>
 		
@@ -246,7 +248,7 @@
 		<p>Sometimes you may have some default options you would like set for all elements that will be using a plugin.</p>
 		<p>This can be achieved by declaring a function named <strong>setDefaultsAccordionPlugin</strong>. If this plugin is defined, it will be called for every plugin being initialized.</p>
 		<p>The <strong>opts</strong> param can be used to set all the default options you like.</p>
-<pre><code>function setDefaultsAccordionPlugin(opts) {
+<pre><code class="language-markup">function setDefaultsAccordionPlugin(opts) {
 	opts.heightStyle = "content";
 }</code></pre>
 
@@ -258,7 +260,7 @@
 		<p>There may be a time when you need to run some code before a plugin is initialized on an element to effect its options.</p>
 		<p>This works the same as setting defaults.</p>
 		<p>Declare the function:</p>
-<pre><code>function preInitAccordionPlugin(opts) {
+<pre><code class="language-markup">function preInitAccordionPlugin(opts) {
 	opts.heightStyle = "content";
 }</code></pre>
 
@@ -283,7 +285,7 @@
 			<input type="radio" id="radio3" name="radio" /><label for="radio3">Choice 3</label>
 		</div>
 		<h6>The Code</h6>
-<pre><code>&lt;h5&gt;Icons&lt;/h5&gt;
+<pre><code class="language-markup">&lt;h5&gt;Icons&lt;/h5&gt;
 &lt;button data-plugins="button" data-button-icons-primary="ui-icon-locked" data-button-text="false"&gt;Button with icon only&lt;/button&gt;
 &lt;button data-plugins="button" data-button-icons-primary="ui-icon-locked"&gt;Button with icon on the left&lt;/button&gt;
 &lt;button data-plugins="button" data-button-icons-primary="ui-icon-locked" data-button-icons-secondary="ui-icon-trianle-1-s"&gt;Button with two icons&lt;/button&gt;
@@ -313,7 +315,7 @@
 			}
 		</script>
 		
-<pre><code>&lt;h4&gt;jQueryUI Tooltips&lt;/h4&gt;
+<pre><code class="language-markup">&lt;h4&gt;jQueryUI Tooltips&lt;/h4&gt;
 &lt;p&gt;You can use the &lt;a data-plugins="tooltip" data-tooltip-show-delay="250" href="#" onclick="return false" title="fade in on show"&gt;show&lt;/a&gt; and
 &lt;a data-plugins="tooltip" data-tooltip-hide-effect="explode" data-tooltip-hide-delay="250" href="#" onclick="return false" title="explode on hide"&gt;hide&lt;/a&gt; options.&lt;/p&gt;
 &lt;p&gt;You can also use the &lt;a data-plugins="tooltip" data-tooltip-show="null" data-tooltip-position-my="left top" data-tooltip-position-at="left bottom" data-tooltip-open="demoOpenEvent" href="#" onclick="return false" title="move down on show"&gt;open event&lt;/a&gt;.&lt;/p&gt;
@@ -328,13 +330,13 @@
 		<h4>Expanding TextArea + jQueryUI Tooltips</h4>
 		<p>Type a lot of text into me</p>
 		<textarea data-plugins="expandingTextArea tooltip" rows="1" title="I have two plugins on me"></textarea>	
-<pre><code>&lt;textarea data-plugins="expandingTextArea tooltip" rows="1" title="I have two plugins on me"&gt;&lt;/textarea&gt;
+<pre><code class="language-markup">&lt;textarea data-plugins="expandingTextArea tooltip" rows="1" title="I have two plugins on me"&gt;&lt;/textarea&gt;
 </code></pre>
 
 		<h4>Countdown Plugin + jQueryUI Draggable</h4> <a href="http://keith-wood.name/countdown.html" target="_blank">View here</a>
 		<p>Draggable Countdown until 1 year from today.</p>
 		<div data-plugins="countdown draggable" data-countdown-until="1y" data-countdown-layout="Click and Drag me &lt;br /&gt;{sn} {sl}, {mn} {ml}, {hn} {hl}, and {dn} {dl}"></div>
-<pre><code>&lt;div data-plugins="countdown" data-countdown-until="1y" data-countdown-layout="{sn} {sl}, {mn} {ml}, {hn} {hl}, and {dn} {dl}"&gt;&lt;/div&gt;
+<pre><code class="language-markup">&lt;div data-plugins="countdown" data-countdown-until="1y" data-countdown-layout="{sn} {sl}, {mn} {ml}, {hn} {hl}, and {dn} {dl}"&gt;&lt;/div&gt;
 </code></pre>
 		
 		<h3 id="faq">FAQ</h3>
