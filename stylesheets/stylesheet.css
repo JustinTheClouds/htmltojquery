@@ -57,7 +57,7 @@ Theme Styles
 
 body {
   box-sizing: border-box;
-  color:#373737;
+  color:#666666;
   background: #212121;
   font-size: 16px;
   font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
@@ -80,20 +80,25 @@ h1 {
 
 h2 {
   padding-bottom: 10px;
-  font-size: 32px;
+  font-size: 36px;
   background: url('../images/bg_hr.png') repeat-x bottom;
 }
 
 h3 {
-  font-size: 24px;
+  margin-top: 50px;
+  font-size: 30px;
+  padding-bottom: 10px;
+  background: url('../images/bg_hr.png') repeat-x bottom;
 }
 
 h4 {
   font-size: 21px;
+  margin-top: 35px;
 }
 
 h5 {
   font-size: 18px;
+  margin-top: 25px;
 }
 
 h6 {
@@ -102,6 +107,23 @@ h6 {
 
 p {
   margin: 10px 0 15px 0;
+}
+
+p.notes {
+	background: #DEDEDE;
+	padding: 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+	-moz-box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+	box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+p.notes:before {
+	content: 'NOTICE';
+	display: block;
+	font-weight: bold;
+	color: #A39D15;
 }
 
 footer p {
@@ -162,21 +184,16 @@ pre, code {
   width: 100%;
   color: #222;
   background-color: #fff;
-
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
   font-size: 14px;
-
   border-radius: 2px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
-
-
-
 }
 
 pre {
   width: 100%;
-  padding: 10px;
+  padding: 10px 0;
   box-shadow: 0 0 10px rgba(0,0,0,.1);
   overflow: auto;
 }
