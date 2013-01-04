@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="description" content="Htmltojquery : Easily convert any html element into almost any jquery plugin with little or no javascript needed." />
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/jquery.prism.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
     <link rel="stylesheet" type="text/css" media="screen" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
 
     <title>Htmltojquery</title>
@@ -105,14 +105,14 @@
 
 		<h4>Defaulting Options</h4>
 		<p>Define function <strong>setDefaults[Pluginname]Plugin</strong>. Then set default options.</p>
-<pre><code class="language-markup">function setDefaultsAccordionPlugin(opts) {
+<pre><code class="language-clike">function setDefaultsAccordionPlugin(opts) {
 	opts.heightStyle = "content";
 }</code></pre>
 		<a href="#defaults" title="More information about defaulting options">More information</a>
 
 		<h4>Manipulating Options Before Initialization</h4>
 		<p>Define function <strong>preInit[Pluginname]Plugin</strong>. Then run code to edit and set options.</p>
-<pre><code class="language-markup">function preInitAccordionPlugin(opts) {
+<pre><code class="language-clike">function preInitAccordionPlugin(opts) {
 	if(x == y) {
 		opts.heightStyle = "content";
 	}
@@ -238,7 +238,7 @@
 </code></pre>
 		
 		<p>Then defining the function</p>
-<pre><code class="language-markup">function accordionActivate(event, ui, element) {
+<pre><code class="language-clike">function accordionActivate(event, ui, element) {
 	alert(ui.newHeader.text() + " is now expanded.");
 }</code></pre>
 		
@@ -248,7 +248,7 @@
 		<p>Sometimes you may have some default options you would like set for all elements that will be using a plugin.</p>
 		<p>This can be achieved by declaring a function named <strong>setDefaultsAccordionPlugin</strong>. If this plugin is defined, it will be called for every plugin being initialized.</p>
 		<p>The <strong>opts</strong> param can be used to set all the default options you like.</p>
-<pre><code class="language-markup">function setDefaultsAccordionPlugin(opts) {
+<pre><code class="language-clike">function setDefaultsAccordionPlugin(opts) {
 	opts.heightStyle = "content";
 }</code></pre>
 
@@ -260,7 +260,7 @@
 		<p>There may be a time when you need to run some code before a plugin is initialized on an element to effect its options.</p>
 		<p>This works the same as setting defaults.</p>
 		<p>Declare the function:</p>
-<pre><code class="language-markup">function preInitAccordionPlugin(opts) {
+<pre><code class="language-clike">function preInitAccordionPlugin(opts) {
 	opts.heightStyle = "content";
 }</code></pre>
 
